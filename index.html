@@ -2,10 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1f6feb">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -14,46 +11,32 @@ content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Prime Transport</title>
 
 <style>
-
 :root{
   --blue:#1f6feb;
   --blue-dark:#1557b0;
   --bg:#f4f6f8;
-  --card:#ffffff;
+  --card:#fff;
   --text:#182230;
   --muted:#667085;
   --line:#e4e7ec;
   --danger:#b42318;
-  --green:#067647;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  -webkit-text-size-adjust:100%;
-}
+html{-webkit-text-size-adjust:100%}
 
 body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:
-  -apple-system,
-  BlinkMacSystemFont,
-  "Segoe UI",
-  sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 .app{
-  width:100%;
   max-width:1180px;
   margin:auto;
-  padding:
-    calc(12px + env(safe-area-inset-top))
-    10px
-    calc(24px + env(safe-area-inset-bottom));
+  padding:12px 10px 30px;
 }
 
 header{
@@ -63,7 +46,6 @@ header{
 h1{
   margin:0;
   font-size:25px;
-  line-height:1.15;
 }
 
 .subtitle{
@@ -78,9 +60,7 @@ h1{
   border-radius:14px;
   padding:13px;
   margin-bottom:11px;
-  box-shadow:
-    0 4px 14px
-    rgba(16,24,40,.05);
+  box-shadow:0 4px 14px rgba(16,24,40,.05);
 }
 
 h2{
@@ -102,20 +82,7 @@ input{
   border:1px solid #d0d5dd;
   border-radius:9px;
   background:#fff;
-  color:var(--text);
   font-size:16px;
-}
-
-input:focus{
-  outline:3px solid rgba(31,111,235,.12);
-  border-color:var(--blue);
-}
-
-.buttonGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-  margin-top:9px;
 }
 
 button{
@@ -133,10 +100,6 @@ button{
   color:#fff;
 }
 
-.primary:active{
-  background:var(--blue-dark);
-}
-
 .secondary{
   background:#eef2f6;
   color:#344054;
@@ -147,26 +110,24 @@ button{
   color:var(--danger);
 }
 
-.employeeList{
-  margin-top:10px;
+.buttonGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin-top:9px;
 }
 
 .employeeRow{
   border:1px solid var(--line);
   border-radius:10px;
   padding:10px;
-  margin-bottom:7px;
-}
-
-.employeeRow strong{
-  font-size:15px;
+  margin-top:8px;
 }
 
 .employeeAddress{
   font-size:12.5px;
   color:var(--muted);
   margin-top:3px;
-  overflow-wrap:anywhere;
 }
 
 .employeeActions{
@@ -178,7 +139,6 @@ button{
 
 .employeeActions button{
   min-height:36px;
-  padding:7px;
   font-size:12px;
 }
 
@@ -203,8 +163,7 @@ button{
 
 .summary{
   display:none;
-  grid-template-columns:
-    repeat(2,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:7px;
   margin-top:11px;
 }
@@ -223,14 +182,7 @@ button{
 
 .stat strong{
   display:block;
-  margin-top:2px;
   font-size:20px;
-}
-
-.resultsTitle{
-  margin-top:15px;
-  margin-bottom:8px;
-  font-size:16px;
 }
 
 .results{
@@ -247,36 +199,30 @@ button{
 
 .resultTop{
   display:flex;
-  justify-content:space-between;
   align-items:flex-start;
-  gap:10px;
+  gap:8px;
 }
 
-.resultRank{
-  min-width:27px;
-  height:27px;
+.rank{
+  width:28px;
+  height:28px;
   border-radius:50%;
   background:#eef2f6;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:12px;
   font-weight:800;
+  font-size:12px;
 }
 
 .resultName{
   flex:1;
 }
 
-.resultName strong{
-  font-size:15px;
-}
-
 .resultAddress{
   color:var(--muted);
   font-size:12px;
   margin-top:2px;
-  overflow-wrap:anywhere;
 }
 
 .metrics{
@@ -287,10 +233,10 @@ button{
 }
 
 .metric{
-  border-radius:9px;
   background:#f8fafc;
-  padding:8px;
   border:1px solid #f0f1f3;
+  border-radius:9px;
+  padding:8px;
 }
 
 .metricLabel{
@@ -299,7 +245,6 @@ button{
 }
 
 .metricValue{
-  font-size:15px;
   font-weight:800;
   margin-top:2px;
 }
@@ -308,7 +253,6 @@ button{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:30px;
   border-radius:999px;
   padding:5px 10px;
   font-weight:800;
@@ -372,17 +316,12 @@ button{
   height:330px;
   border-radius:11px;
   margin-top:10px;
-  overflow:hidden;
 }
 
 .rules{
   font-size:12.5px;
-  line-height:1.65;
+  line-height:1.7;
   color:#475467;
-}
-
-.desktopGrid{
-  display:block;
 }
 
 .empty{
@@ -392,14 +331,9 @@ button{
 }
 
 @media(min-width:850px){
+  .app{padding:22px}
 
-  .app{
-    padding:22px;
-  }
-
-  h1{
-    font-size:32px;
-  }
+  h1{font-size:32px}
 
   .desktopGrid{
     display:grid;
@@ -408,25 +342,18 @@ button{
     align-items:start;
   }
 
-  .card{
-    padding:17px;
-  }
-
   .summary{
-    grid-template-columns:
-      repeat(5,1fr);
+    grid-template-columns:repeat(5,1fr);
   }
 
   .results{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   #map{
     height:480px;
   }
 }
-
 </style>
 </head>
 
@@ -435,15 +362,9 @@ button{
 <div class="app">
 
 <header>
-
-<h1>Prime Transport</h1>
-
-<p class="subtitle">
-Distances, primes et trajets Google Maps
-</p>
-
+  <h1>Prime Transport</h1>
+  <p class="subtitle">Distances, primes et trajets Google Maps</p>
 </header>
-
 
 <div class="desktopGrid">
 
@@ -453,67 +374,27 @@ Distances, primes et trajets Google Maps
 
 <h2>Employés</h2>
 
-<input
-  type="hidden"
-  id="editId"
->
+<input type="hidden" id="editId">
 
-<label for="name">
-Nom
-</label>
+<label>Nom</label>
+<input id="name" placeholder="Ex. Jean Tremblay">
 
-<input
-  id="name"
-  placeholder="Ex. Jean Tremblay"
->
-
-<label for="address">
-Adresse permanente
-</label>
-
-<input
-  id="address"
-  placeholder="Ex. 123 rue Exemple, Candiac, QC"
->
+<label>Adresse permanente</label>
+<input id="address" placeholder="Ex. 123 rue Exemple, Candiac, QC">
 
 <div class="buttonGrid">
-
-<button
-  class="primary"
-  onclick="saveEmployee()"
->
-Ajouter / Modifier
-</button>
-
-<button
-  class="secondary"
-  onclick="cancelEdit()"
->
-Annuler
-</button>
-
+  <button class="primary" onclick="saveEmployee()">Ajouter / Modifier</button>
+  <button class="secondary" onclick="cancelEdit()">Annuler</button>
 </div>
 
+<label>Recherche</label>
+<input id="search" placeholder="Nom ou adresse" oninput="renderEmployees()">
 
-<label for="search">
-Recherche
-</label>
-
-<input
-  id="search"
-  placeholder="Nom ou adresse"
-  oninput="renderEmployees()"
->
-
-<div
-  id="employeeList"
-  class="employeeList"
-></div>
+<div id="employeeList"></div>
 
 </section>
 
 </div>
-
 
 <div>
 
@@ -521,147 +402,84 @@ Recherche
 
 <h2>Chantier</h2>
 
-<label for="site">
-Adresse du chantier
-</label>
-
-<input
-  id="site"
-  placeholder="Ex. 500 boulevard Industriel, Montréal, QC"
->
+<label>Adresse du chantier</label>
+<input id="site" placeholder="Ex. 3120 Boulevard Taschereau, Greenfield Park">
 
 <div class="buttonGrid">
-
-<button
-  class="primary"
-  onclick="calculateTeam()"
->
-Calculer l'équipe
-</button>
-
-<button
-  class="secondary"
-  onclick="clearResults()"
->
-Effacer
-</button>
-
+  <button class="primary" onclick="calculateTeam()">Calculer l'équipe</button>
+  <button class="secondary" onclick="clearResults()">Effacer</button>
 </div>
 
 <div class="buttonGrid">
-
-<button
-  class="secondary"
-  onclick="exportCSV()"
->
-Exporter CSV
-</button>
-
+  <button class="secondary" onclick="exportCSV()">Exporter CSV</button>
 </div>
 
-
-<div
-  id="loading"
-  class="loading"
->
-Calcul Google Maps en cours…
+<div id="loading" class="loading">
+  Calcul Google Maps en cours…
 </div>
 
 <div id="error"></div>
 
+<div id="summary" class="summary">
 
-<div
-  id="summary"
-  class="summary"
->
+  <div class="stat">
+    <span>Employés</span>
+    <strong id="total">0</strong>
+  </div>
 
-<div class="stat">
-<span>Employés</span>
-<strong id="total">0</strong>
-</div>
+  <div class="stat">
+    <span>TR1</span>
+    <strong id="sumTr1">0</strong>
+  </div>
 
-<div class="stat">
-<span>TR1</span>
-<strong id="sumTr1">0</strong>
-</div>
+  <div class="stat">
+    <span>TR2</span>
+    <strong id="sumTr2">0</strong>
+  </div>
 
-<div class="stat">
-<span>TR2</span>
-<strong id="sumTr2">0</strong>
-</div>
+  <div class="stat">
+    <span>TR3</span>
+    <strong id="sumTr3">0</strong>
+  </div>
 
-<div class="stat">
-<span>TR3</span>
-<strong id="sumTr3">0</strong>
-</div>
-
-<div class="stat">
-<span>Pension</span>
-<strong id="sumPension">0</strong>
-</div>
+  <div class="stat">
+    <span>Pension</span>
+    <strong id="sumPension">0</strong>
+  </div>
 
 </div>
 
+<h2 style="margin-top:16px">Résultats</h2>
 
-<h3 class="resultsTitle">
-Résultats
-</h3>
-
-<div
-  id="results"
-  class="results"
->
-
-<div class="empty">
-Aucun calcul effectué.
-</div>
-
+<div id="results" class="results">
+  <div class="empty">Aucun calcul effectué.</div>
 </div>
 
 </section>
 
+<section class="card" id="mapCard">
 
-<section
-  class="card"
-  id="mapCard"
->
-
-<h2>Trajet</h2>
+<h2>Trajet Google Maps</h2>
 
 <div class="routeHeader">
-
-<div id="routeEmployee"></div>
-
-<div id="routeDetails"></div>
-
+  <div id="routeEmployee"></div>
+  <div id="routeDetails"></div>
 </div>
 
 <div id="map"></div>
 
 </section>
 
-
 <section class="card">
 
 <h2>Barème</h2>
 
 <div class="rules">
-
-Moins de 48 km :
-<strong>aucune prime</strong><br>
-
-48 à moins de 72 km :
-<strong>TR1</strong><br>
-
-72 à moins de 88 km :
-<strong>TR2</strong><br>
-
-88 à moins de 120 km :
-<strong>TR3</strong><br>
-
-120 km et plus :
-<strong>Pension</strong>
-
+  Moins de 48 km : <strong>aucune prime</strong><br>
+  48 à moins de 72 km : <strong>TR1</strong><br>
+  72 à moins de 88 km : <strong>TR2</strong><br>
+  88 à moins de 120 km : <strong>TR3</strong><br>
+  120 km et plus : <strong>Pension</strong>
 </div>
 
 </section>
@@ -672,338 +490,178 @@ Moins de 48 km :
 
 </div>
 
-
 <script>
 
-const STORAGE_KEY =
-  "primeTransportMobileGoogleV2";
+const STORAGE_KEY = "primeTransportMobileGoogleV3";
 
 let lastResults = [];
-
 let currentSite = "";
-
 let map = null;
-
 let mapPolylines = [];
-
 let mapMarkers = [];
 
 
 /* EMPLOYÉS */
 
 function loadEmployees(){
-
   try{
-
-    return JSON.parse(
-      localStorage.getItem(
-        STORAGE_KEY
-      ) || "[]"
-    );
-
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
   }catch{
-
     return [];
-
   }
-
 }
-
 
 function storeEmployees(data){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
-
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
 }
-
 
 function makeId(){
-
-  return Date.now().toString()
-    +
-    Math.random().toString(16);
-
+  return Date.now().toString() + Math.random().toString(16);
 }
-
 
 function escapeHTML(text){
-
   return String(text)
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
-
 
 function saveEmployee(){
 
   const name =
-    document
-      .getElementById("name")
-      .value
-      .trim();
+    document.getElementById("name").value.trim();
 
   const address =
-    document
-      .getElementById("address")
-      .value
-      .trim();
+    document.getElementById("address").value.trim();
 
   const editId =
-    document
-      .getElementById("editId")
-      .value;
-
+    document.getElementById("editId").value;
 
   if(!name || !address){
-
-    alert(
-      "Entre le nom et l'adresse."
-    );
-
+    alert("Entre le nom et l'adresse.");
     return;
-
   }
 
-
-  const employees =
-    loadEmployees();
-
+  const employees = loadEmployees();
 
   if(editId){
 
     const index =
-      employees.findIndex(
-        e => e.id === editId
-      );
-
+      employees.findIndex(e => e.id === editId);
 
     if(index >= 0){
-
-      employees[index].name =
-        name;
-
-      employees[index].address =
-        address;
-
+      employees[index].name = name;
+      employees[index].address = address;
     }
 
   }else{
 
     employees.push({
-
       id:makeId(),
-
       name:name,
-
       address:address
-
     });
 
   }
 
-
-  storeEmployees(
-    employees
-  );
+  storeEmployees(employees);
 
   cancelEdit();
 
   renderEmployees();
-
 }
-
 
 function renderEmployees(){
 
   const query =
-    document
-      .getElementById("search")
+    document.getElementById("search")
       .value
       .trim()
       .toLowerCase();
 
-
   const employees =
-    loadEmployees()
-      .filter(
-        e =>
-
-        e.name
-          .toLowerCase()
-          .includes(query)
-
-        ||
-
-        e.address
-          .toLowerCase()
-          .includes(query)
-      );
-
-
-  const container =
-    document.getElementById(
-      "employeeList"
+    loadEmployees().filter(e =>
+      e.name.toLowerCase().includes(query) ||
+      e.address.toLowerCase().includes(query)
     );
 
+  const container =
+    document.getElementById("employeeList");
 
   if(!employees.length){
-
     container.innerHTML =
-      '<div class="empty">'
-      +
-      'Aucun employé.'
-      +
-      '</div>';
-
+      '<div class="empty">Aucun employé.</div>';
     return;
-
   }
 
-
   container.innerHTML =
-    employees
-      .map(
-        e => `
+    employees.map(e => `
 
-<div class="employeeRow">
+      <div class="employeeRow">
 
-<strong>
-${escapeHTML(e.name)}
-</strong>
+        <strong>${escapeHTML(e.name)}</strong>
 
-<div class="employeeAddress">
-${escapeHTML(e.address)}
-</div>
+        <div class="employeeAddress">
+          ${escapeHTML(e.address)}
+        </div>
 
-<div class="employeeActions">
+        <div class="employeeActions">
 
-<button
-  class="secondary"
-  onclick="editEmployee('${e.id}')"
->
-Modifier
-</button>
+          <button
+            class="secondary"
+            onclick="editEmployee('${e.id}')"
+          >
+            Modifier
+          </button>
 
-<button
-  class="danger"
-  onclick="deleteEmployee('${e.id}')"
->
-Supprimer
-</button>
+          <button
+            class="danger"
+            onclick="deleteEmployee('${e.id}')"
+          >
+            Supprimer
+          </button>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
-`
-      )
-      .join("");
-
+    `).join("");
 }
-
 
 function editEmployee(id){
 
   const employee =
-    loadEmployees()
-      .find(
-        e => e.id === id
-      );
+    loadEmployees().find(e => e.id === id);
 
+  if(!employee) return;
 
-  if(!employee){
-
-    return;
-
-  }
-
-
-  document
-    .getElementById("editId")
-    .value =
+  document.getElementById("editId").value =
     employee.id;
 
-
-  document
-    .getElementById("name")
-    .value =
+  document.getElementById("name").value =
     employee.name;
 
-
-  document
-    .getElementById("address")
-    .value =
+  document.getElementById("address").value =
     employee.address;
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
 }
-
 
 function cancelEdit(){
 
-  document
-    .getElementById("editId")
-    .value = "";
-
-  document
-    .getElementById("name")
-    .value = "";
-
-  document
-    .getElementById("address")
-    .value = "";
-
+  document.getElementById("editId").value = "";
+  document.getElementById("name").value = "";
+  document.getElementById("address").value = "";
 }
-
 
 function deleteEmployee(id){
 
   const employees =
-    loadEmployees()
-      .filter(
-        e => e.id !== id
-      );
+    loadEmployees().filter(e => e.id !== id);
 
-
-  storeEmployees(
-    employees
-  );
-
+  storeEmployees(employees);
 
   renderEmployees();
-
 }
 
 
@@ -1012,50 +670,37 @@ function deleteEmployee(id){
 function getPremium(km){
 
   if(km < 48){
-
     return {
       name:"Aucune prime",
       css:"none"
     };
-
   }
 
-
   if(km < 72){
-
     return {
       name:"TR1",
       css:"tr1"
     };
-
   }
 
-
   if(km < 88){
-
     return {
       name:"TR2",
       css:"tr2"
     };
-
   }
 
-
   if(km < 120){
-
     return {
       name:"TR3",
       css:"tr3"
     };
-
   }
-
 
   return {
     name:"Pension",
     css:"pension"
   };
-
 }
 
 
@@ -1063,46 +708,24 @@ function getPremium(km){
 
 function formatDuration(ms){
 
-  if(
-    ms === undefined
-    ||
-    ms === null
-  ){
-
+  if(ms === undefined || ms === null){
     return "—";
-
   }
 
-
   const minutesTotal =
-    Math.round(
-      ms / 60000
-    );
-
+    Math.round(ms / 60000);
 
   const hours =
-    Math.floor(
-      minutesTotal / 60
-    );
-
+    Math.floor(minutesTotal / 60);
 
   const minutes =
     minutesTotal % 60;
 
-
   if(hours === 0){
-
-    return minutes
-      + " min";
-
+    return minutes + " min";
   }
 
-
-  return hours
-    + " h "
-    + minutes
-    + " min";
-
+  return hours + " h " + minutes + " min";
 }
 
 
@@ -1113,80 +736,46 @@ async function calculateTeam(){
   const employees =
     loadEmployees();
 
-
   const site =
-    document
-      .getElementById("site")
-      .value
-      .trim();
-
+    document.getElementById("site").value.trim();
 
   const error =
-    document.getElementById(
-      "error"
-    );
-
+    document.getElementById("error");
 
   error.textContent = "";
 
-
   if(!employees.length){
-
-    alert(
-      "Ajoute au moins un employé."
-    );
-
+    alert("Ajoute au moins un employé.");
     return;
-
   }
-
 
   if(!site){
-
-    alert(
-      "Entre l'adresse du chantier."
-    );
-
+    alert("Entre l'adresse du chantier.");
     return;
-
   }
-
 
   if(employees.length > 49){
-
-    alert(
-      "Cette version accepte jusqu'à 49 employés avec une destination."
-    );
-
+    alert("Maximum 49 employés à la fois.");
     return;
-
   }
 
-
-  document
-    .getElementById("loading")
-    .style.display =
+  document.getElementById("loading").style.display =
     "block";
-
 
   try{
 
-    const {
-      RouteMatrix,
-      UnitSystem
-    } =
-      await google.maps
-        .importLibrary(
-          "routes"
-        );
-
+    const [
+      {RouteMatrix},
+      {UnitSystem}
+    ] = await Promise.all([
+      google.maps.importLibrary("routes"),
+      google.maps.importLibrary("core")
+    ]);
 
     const request = {
 
       origins:
-        employees.map(
-          e => e.address
-        ),
+        employees.map(e => e.address),
 
       destinations:[
         site
@@ -1202,113 +791,76 @@ async function calculateTeam(){
         UnitSystem.METRIC,
 
       fields:[
-
         "distanceMeters",
-
         "durationMillis",
-
         "condition"
-
       ]
-
     };
 
-
-    const {
-      matrix
-    } =
-      await RouteMatrix
-        .computeRouteMatrix(
-          request
-        );
-
+    const {matrix} =
+      await RouteMatrix.computeRouteMatrix(request);
 
     const output = [];
 
+    employees.forEach((employee,index) => {
 
-    employees.forEach(
-      (employee,index) => {
+      const item =
+        matrix.rows[index]?.items[0];
 
+      if(
+        item &&
+        typeof item.distanceMeters === "number"
+      ){
 
-        const item =
-          matrix.rows[index]
-            ?.items[0];
+        const km =
+          item.distanceMeters / 1000;
 
+        const premium =
+          getPremium(km);
 
-        if(
-          item
-          &&
-          typeof
-            item.distanceMeters
-            === "number"
-        ){
+        output.push({
 
-          const km =
-            item.distanceMeters
-            / 1000;
+          ...employee,
 
+          km:km,
 
-          const premium =
-            getPremium(km);
+          durationMillis:
+            item.durationMillis,
 
+          premium:
+            premium.name,
 
-          output.push({
+          premiumClass:
+            premium.css
+        });
 
-            ...employee,
+      }else{
 
-            km:km,
+        output.push({
 
-            durationMillis:
-              item.durationMillis,
+          ...employee,
 
-            premium:
-              premium.name,
+          km:null,
 
-            premiumClass:
-              premium.css
+          durationMillis:null,
 
-          });
+          premium:"À vérifier",
 
-        }else{
-
-          output.push({
-
-            ...employee,
-
-            km:null,
-
-            durationMillis:null,
-
-            premium:
-              "À vérifier",
-
-            premiumClass:
-              "none"
-
-          });
-
-        }
+          premiumClass:"none"
+        });
 
       }
-    );
 
+    });
 
-    output.sort(
-      (a,b) => {
+    output.sort((a,b) => {
 
-        if(a.km === null){
-          return 1;
-        }
+      if(a.km === null) return 1;
 
-        if(b.km === null){
-          return -1;
-        }
+      if(b.km === null) return -1;
 
-        return a.km - b.km;
-
-      }
-    );
-
+      return a.km - b.km;
+    });
 
     lastResults =
       output;
@@ -1316,300 +868,178 @@ async function calculateTeam(){
     currentSite =
       site;
 
-
-    renderResults(
-      output
-    );
-
+    renderResults(output);
 
   }catch(err){
 
-    console.error(
-      err
-    );
-
+    console.error(err);
 
     error.textContent =
-      "Erreur Google Maps : "
-      +
-      (
-        err.message
-        ||
-        "Impossible de calculer."
-      );
+      "Erreur Google Maps : " +
+      (err.message || "Impossible de calculer.");
 
   }finally{
 
-    document
-      .getElementById("loading")
-      .style.display =
+    document.getElementById("loading").style.display =
       "none";
-
   }
-
 }
 
 
-/* AFFICHAGE RÉSULTATS */
+/* RÉSULTATS */
 
 function renderResults(data){
 
   const container =
-    document.getElementById(
-      "results"
-    );
-
+    document.getElementById("results");
 
   container.innerHTML =
-    data.map(
-      (r,index) => `
+    data.map((r,index) => `
 
-<div class="resultCard">
+      <div class="resultCard">
 
-<div class="resultTop">
+        <div class="resultTop">
 
-<div class="resultRank">
-${index + 1}
-</div>
+          <div class="rank">
+            ${index + 1}
+          </div>
 
-<div class="resultName">
+          <div class="resultName">
 
-<strong>
-${escapeHTML(r.name)}
-</strong>
+            <strong>
+              ${escapeHTML(r.name)}
+            </strong>
 
-<div class="resultAddress">
-${escapeHTML(r.address)}
-</div>
+            <div class="resultAddress">
+              ${escapeHTML(r.address)}
+            </div>
 
-</div>
+          </div>
 
-<span
-class="badge ${r.premiumClass}"
->
-${escapeHTML(r.premium)}
-</span>
+          <span class="badge ${r.premiumClass}">
+            ${escapeHTML(r.premium)}
+          </span>
 
-</div>
+        </div>
 
+        <div class="metrics">
 
-<div class="metrics">
+          <div class="metric">
 
-<div class="metric">
+            <div class="metricLabel">
+              Distance
+            </div>
 
-<div class="metricLabel">
-Distance
-</div>
+            <div class="metricValue">
+              ${
+                r.km === null
+                ? "—"
+                : r.km.toFixed(1) + " km"
+              }
+            </div>
 
-<div class="metricValue">
+          </div>
 
-${
-  r.km === null
-  ?
-  "—"
-  :
-  r.km.toFixed(1)
-  + " km"
-}
+          <div class="metric">
 
-</div>
+            <div class="metricLabel">
+              Durée
+            </div>
 
-</div>
+            <div class="metricValue">
+              ${formatDuration(r.durationMillis)}
+            </div>
 
+          </div>
 
-<div class="metric">
+        </div>
 
-<div class="metricLabel">
-Durée
-</div>
+        ${
+          r.km === null
+          ? ""
+          : `
+          <button
+            class="primary routeButton"
+            onclick="showRoute('${r.id}')"
+          >
+            Voir trajet
+          </button>
+          `
+        }
 
-<div class="metricValue">
+      </div>
 
-${
-  formatDuration(
-    r.durationMillis
-  )
-}
+    `).join("");
 
-</div>
-
-</div>
-
-</div>
-
-
-${
-  r.km === null
-
-  ?
-
-  ""
-
-  :
-
-  `
-
-<button
-class="primary routeButton"
-onclick="showRoute('${r.id}')"
->
-Voir trajet
-</button>
-
-`
-}
-
-</div>
-
-`
-    )
-    .join("");
-
-
-  document
-    .getElementById("summary")
-    .style.display =
+  document.getElementById("summary").style.display =
     "grid";
 
-
-  document
-    .getElementById("total")
-    .textContent =
+  document.getElementById("total").textContent =
     data.length;
 
+  document.getElementById("sumTr1").textContent =
+    data.filter(r => r.premium === "TR1").length;
 
-  document
-    .getElementById("sumTr1")
-    .textContent =
-    data.filter(
-      r =>
-      r.premium === "TR1"
-    ).length;
+  document.getElementById("sumTr2").textContent =
+    data.filter(r => r.premium === "TR2").length;
 
+  document.getElementById("sumTr3").textContent =
+    data.filter(r => r.premium === "TR3").length;
 
-  document
-    .getElementById("sumTr2")
-    .textContent =
-    data.filter(
-      r =>
-      r.premium === "TR2"
-    ).length;
-
-
-  document
-    .getElementById("sumTr3")
-    .textContent =
-    data.filter(
-      r =>
-      r.premium === "TR3"
-    ).length;
-
-
-  document
-    .getElementById("sumPension")
-    .textContent =
-    data.filter(
-      r =>
-      r.premium === "Pension"
-    ).length;
-
+  document.getElementById("sumPension").textContent =
+    data.filter(r => r.premium === "Pension").length;
 }
 
 
-/* CARTE */
+/* TRAJET */
 
 async function showRoute(employeeId){
 
   const employee =
-    lastResults.find(
-      e => e.id === employeeId
-    );
+    lastResults.find(e => e.id === employeeId);
 
-
-  if(!employee){
-
-    return;
-
-  }
-
+  if(!employee) return;
 
   try{
 
-    document
-      .getElementById("mapCard")
-      .style.display =
+    document.getElementById("mapCard").style.display =
       "block";
 
-
-    document
-      .getElementById("routeEmployee")
-      .textContent =
+    document.getElementById("routeEmployee").textContent =
       employee.name;
 
-
-    document
-      .getElementById("routeDetails")
-      .textContent =
-
-      employee.km
-        .toFixed(1)
-
-      + " km • "
-
-      + formatDuration(
-          employee.durationMillis
-        )
-
-      + " • "
-
-      + employee.premium;
-
+    document.getElementById("routeDetails").textContent =
+      employee.km.toFixed(1) +
+      " km • " +
+      formatDuration(employee.durationMillis) +
+      " • " +
+      employee.premium;
 
     const [
       {Map},
       {Route}
-    ] =
-      await Promise.all([
-
-        google.maps
-          .importLibrary(
-            "maps"
-          ),
-
-        google.maps
-          .importLibrary(
-            "routes"
-          )
-
-      ]);
-
+    ] = await Promise.all([
+      google.maps.importLibrary("maps"),
+      google.maps.importLibrary("routes")
+    ]);
 
     if(!map){
 
-      map =
-        new Map(
-          document
-            .getElementById("map"),
-          {
-
-            center:{
-              lat:45.50,
-              lng:-73.57
-            },
-
-            zoom:8,
-
-            mapId:
-              "DEMO_MAP_ID"
-
-          }
-        );
+      map = new Map(
+        document.getElementById("map"),
+        {
+          center:{
+            lat:45.50,
+            lng:-73.57
+          },
+          zoom:8,
+          mapId:"DEMO_MAP_ID"
+        }
+      );
 
     }
 
-
     clearRoute();
-
 
     const request = {
 
@@ -1626,172 +1056,87 @@ async function showRoute(employeeId){
         "TRAFFIC_UNAWARE",
 
       fields:[
-
         "path",
-
-        "legs",
-
         "viewport"
-
       ]
-
     };
 
+    const {routes} =
+      await Route.computeRoutes(request);
 
-    const {
-      routes
-    } =
-      await Route
-        .computeRoutes(
-          request
-        );
-
-
-    if(
-      !routes
-      ||
-      routes.length === 0
-    ){
-
-      throw new Error(
-        "Aucun trajet trouvé."
-      );
-
+    if(!routes || routes.length === 0){
+      throw new Error("Aucun trajet trouvé.");
     }
-
 
     const route =
       routes[0];
 
-
     mapPolylines =
       route.createPolylines();
 
-
-    mapPolylines
-      .forEach(
-        polyline => {
-
-          polyline.setMap(
-            map
-          );
-
-        }
-      );
-
+    mapPolylines.forEach(polyline => {
+      polyline.setMap(map);
+    });
 
     mapMarkers =
-      await route
-        .createWaypointAdvancedMarkers({
-          map:map
-        });
+      await route.createWaypointAdvancedMarkers();
 
+    mapMarkers.forEach(marker => {
+      marker.map = map;
+    });
 
     if(route.viewport){
 
-      map.fitBounds(
-        route.viewport
-      );
+      map.fitBounds(route.viewport);
 
     }else{
 
-      const {
-        LatLngBounds
-      } =
-        await google.maps
-          .importLibrary(
-            "core"
-          );
-
+      const {LatLngBounds} =
+        await google.maps.importLibrary("core");
 
       const bounds =
         new LatLngBounds();
 
-
-      route.path
-        .forEach(
-          point => {
-
-            bounds.extend(
-              point
-            );
-
-          }
-        );
-
-
-      map.fitBounds(
-        bounds
-      );
-
-    }
-
-
-    document
-      .getElementById("mapCard")
-      .scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"start"
-
+      route.path.forEach(point => {
+        bounds.extend(point);
       });
 
+      map.fitBounds(bounds);
+    }
+
+    document.getElementById("mapCard")
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
 
   }catch(err){
 
-    console.error(
-      err
-    );
-
+    console.error(err);
 
     alert(
-      "Impossible d'afficher le trajet : "
-      +
-      (
-        err.message
-        ||
-        "Erreur Google Maps"
-      )
+      "Impossible d'afficher le trajet : " +
+      (err.message || "Erreur Google Maps")
     );
-
   }
-
 }
 
 
-/* NETTOYER CARTE */
+/* NETTOYAGE CARTE */
 
 function clearRoute(){
 
-  mapPolylines
-    .forEach(
-      polyline => {
-
-        polyline.setMap(
-          null
-        );
-
-      }
-    );
-
+  mapPolylines.forEach(polyline => {
+    polyline.setMap(null);
+  });
 
   mapPolylines = [];
 
-
-  mapMarkers
-    .forEach(
-      marker => {
-
-        marker.map =
-          null;
-
-      }
-    );
-
+  mapMarkers.forEach(marker => {
+    marker.map = null;
+  });
 
   mapMarkers = [];
-
 }
 
 
@@ -1803,32 +1148,16 @@ function clearResults(){
 
   currentSite = "";
 
+  document.getElementById("results").innerHTML =
+    '<div class="empty">Aucun calcul effectué.</div>';
 
-  document
-    .getElementById("results")
-    .innerHTML =
-
-    '<div class="empty">'
-    +
-    'Aucun calcul effectué.'
-    +
-    '</div>';
-
-
-  document
-    .getElementById("summary")
-    .style.display =
+  document.getElementById("summary").style.display =
     "none";
 
-
-  document
-    .getElementById("mapCard")
-    .style.display =
+  document.getElementById("mapCard").style.display =
     "none";
-
 
   clearRoute();
-
 }
 
 
@@ -1836,33 +1165,18 @@ function clearResults(){
 
 function csvValue(value){
 
-  return '"'
-    +
-    String(
-      value ?? ""
-    )
-      .replaceAll(
-        '"',
-        '""'
-      )
-    +
-    '"';
-
+  return '"' +
+    String(value ?? "")
+      .replaceAll('"','""')
+    + '"';
 }
-
 
 function exportCSV(){
 
   if(!lastResults.length){
-
-    alert(
-      "Fais un calcul avant."
-    );
-
+    alert("Fais un calcul avant.");
     return;
-
   }
-
 
   const rows = [
 
@@ -1884,85 +1198,54 @@ function exportCSV(){
       "Prime"
     ],
 
-    ...lastResults.map(
-      (r,index) => [
+    ...lastResults.map((r,index) => [
 
-        index + 1,
+      index + 1,
 
-        r.name,
+      r.name,
 
-        r.address,
+      r.address,
 
-        r.km === null
-        ?
-        ""
-        :
-        r.km.toFixed(1),
+      r.km === null
+        ? ""
+        : r.km.toFixed(1),
 
-        formatDuration(
-          r.durationMillis
-        ),
+      formatDuration(
+        r.durationMillis
+      ),
 
-        r.premium
-
-      ]
-    )
-
+      r.premium
+    ])
   ];
 
-
   const csv =
-    "\ufeff"
-    +
-    rows
-      .map(
-        row =>
-          row
-            .map(
-              csvValue
-            )
-            .join(";")
-      )
-      .join("\n");
-
+    "\ufeff" +
+    rows.map(row =>
+      row.map(csvValue).join(";")
+    ).join("\n");
 
   const blob =
     new Blob(
       [csv],
       {
-        type:
-        "text/csv;charset=utf-8"
+        type:"text/csv;charset=utf-8"
       }
     );
 
-
   const link =
-    document.createElement(
-      "a"
-    );
-
+    document.createElement("a");
 
   link.href =
-    URL.createObjectURL(
-      blob
-    );
-
+    URL.createObjectURL(blob);
 
   link.download =
     "prime_transport.csv";
 
-
   link.click();
 
-
-  setTimeout(
-    () =>
-      URL.revokeObjectURL(
-        link.href
-      ),
-    1000
-  );
-
+  setTimeout(() => {
+    URL.revokeObjectURL(link.href);
+  },1000);
 }
 
 
@@ -1972,135 +1255,77 @@ renderEmployees();
 
 </script>
 
-
 <script>
 
 (g=>{
 
 var h,a,k,
-
 p="The Google Maps JavaScript API",
-
 c="google",
-
 l="importLibrary",
-
 q="__ib__",
-
 m=document,
-
 b=window;
-
 
 b=b[c]||(b[c]={});
 
-
 var d=b.maps||(b.maps={}),
-
 r=new Set,
-
 e=new URLSearchParams,
+u=()=>h||(h=new Promise(async(f,n)=>{
 
-u=()=>h||
+await(a=m.createElement("script"));
 
-(h=new Promise(async(f,n)=>{
-
-await(
-  a=m.createElement(
-    "script"
-  )
-);
-
-
-e.set(
-  "libraries",
-  [...r]+""
-);
-
+e.set("libraries",[...r]+"");
 
 for(k in g){
 
   e.set(
-
     k.replace(
       /[A-Z]/g,
-      t =>
-      "_"
-      +
-      t[0].toLowerCase()
+      t=>"_"+t[0].toLowerCase()
     ),
-
     g[k]
-
   );
-
 }
-
 
 e.set(
   "callback",
   c+".maps."+q
 );
 
-
 a.src =
-"https://maps."
-+
-c
-+
-"apis.com/maps/api/js?"
-+
-e;
-
+"https://maps."+c+"apis.com/maps/api/js?"+e;
 
 d[q]=f;
-
 
 a.onerror =
 ()=>h=n(
   Error(
-    p
-    +
-    " could not load."
+    p+" could not load."
   )
 );
-
 
 a.nonce =
 m.querySelector(
   "script[nonce]"
-)?.nonce
-||
-"";
-
+)?.nonce||"";
 
 m.head.append(a);
 
 }));
 
-
 d[l]
-
 ?
-
 console.warn(
-  p
-  +
-  " only loads once. Ignoring:",
+  p+" only loads once. Ignoring:",
   g
 )
-
 :
-
 d[l]=(f,...n)=>
-
-r.add(f)
-
-&&
-
-u().then(
-  () =>
-  d[l](f,...n)
+r.add(f)&&
+u().then(()=>
+d[l](f,...n)
 );
 
 })({
