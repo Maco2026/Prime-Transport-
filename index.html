@@ -1,1 +1,928 @@
-AIzaSyAgWsBOrnbLuCM0zKlKMoQc7pxdEQDFjPU
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1f6feb">
+
+<title>Prime Transport</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f4f6f8;
+  color:#182230;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:15px;
+}
+
+h1{margin-bottom:5px}
+
+.subtitle{
+  color:#667085;
+  margin-top:0;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:15px;
+  box-shadow:0 4px 16px rgba(0,0,0,.07);
+}
+
+.columns{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:15px;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-top:10px;
+  margin-bottom:5px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  margin-bottom:8px;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:10px 12px;
+  font-weight:700;
+  cursor:pointer;
+  margin:3px;
+}
+
+.primary{
+  background:#1f6feb;
+  color:#fff;
+}
+
+.secondary{
+  background:#edf2f7;
+  color:#344054;
+}
+
+.danger{
+  background:#fee4e2;
+  color:#b42318;
+}
+
+.employee{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:10px;
+  margin-top:8px;
+}
+
+.employeeAddress{
+  color:#667085;
+  font-size:13px;
+  margin-top:3px;
+}
+
+.tableWrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:820px;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid #ddd;
+  text-align:left;
+}
+
+th{
+  background:#f8fafc;
+}
+
+.badge{
+  display:inline-block;
+  font-weight:bold;
+  padding:5px 9px;
+  border-radius:20px;
+}
+
+.none{
+  background:#eee;
+  color:#475467;
+}
+
+.tr1{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.tr2{
+  background:#ede9fe;
+  color:#6d28d9;
+}
+
+.tr3{
+  background:#ffedd5;
+  color:#c2410c;
+}
+
+.pension{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.loading{
+  display:none;
+  margin-top:12px;
+  font-weight:600;
+}
+
+#error{
+  color:#b42318;
+  font-weight:600;
+  margin-top:10px;
+}
+
+.summary{
+  display:none;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin:15px 0;
+}
+
+.stat{
+  background:#f8fafc;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #e4e7ec;
+}
+
+.stat strong{
+  display:block;
+  font-size:21px;
+  margin-top:2px;
+}
+
+#mapCard{
+  display:none;
+}
+
+#map{
+  width:100%;
+  height:480px;
+  border-radius:12px;
+  margin-top:12px;
+}
+
+.routeInfo{
+  background:#f8fafc;
+  border:1px solid #e4e7ec;
+  border-radius:12px;
+  padding:12px;
+}
+
+.routeInfo strong{
+  font-size:18px;
+}
+
+.routeDetails{
+  color:#667085;
+  margin-top:5px;
+}
+
+@media(max-width:800px){
+  .columns{
+    grid-template-columns:1fr;
+  }
+
+  .summary{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  #map{
+    height:380px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Prime Transport</h1>
+
+<p class="subtitle">
+Distances et trajets calculés avec Google Maps
+</p>
+
+<div class="columns">
+
+<div>
+
+<div class="card">
+
+<h2>Employés</h2>
+
+<input type="hidden" id="editId">
+
+<label>Nom</label>
+
+<input id="name" placeholder="Ex. Jean Tremblay">
+
+<label>Adresse permanente</label>
+
+<input id="address" placeholder="Ex. 123 rue Exemple, Candiac, QC">
+
+<button class="primary" onclick="saveEmployee()">
+Ajouter / Modifier
+</button>
+
+<button class="secondary" onclick="cancelEdit()">
+Annuler
+</button>
+
+<label>Recherche</label>
+
+<input id="search" placeholder="Nom ou adresse" oninput="renderEmployees()">
+
+<div id="employeeList"></div>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="card">
+
+<h2>Chantier</h2>
+
+<label>Adresse du chantier</label>
+
+<input id="site" placeholder="Ex. 500 boulevard Industriel, Montréal, QC">
+
+<button class="primary" onclick="calculateTeam()">
+Calculer toute l'équipe
+</button>
+
+<button class="secondary" onclick="clearResults()">
+Effacer
+</button>
+
+<button class="secondary" onclick="exportCSV()">
+Exporter CSV
+</button>
+
+<div id="loading" class="loading">
+Calcul Google Maps en cours...
+</div>
+
+<div id="error"></div>
+
+<div id="summary" class="summary">
+
+<div class="stat">
+Employés
+<strong id="total">0</strong>
+</div>
+
+<div class="stat">
+TR1
+<strong id="sumTr1">0</strong>
+</div>
+
+<div class="stat">
+TR2
+<strong id="sumTr2">0</strong>
+</div>
+
+<div class="stat">
+TR3
+<strong id="sumTr3">0</strong>
+</div>
+
+<div class="stat">
+Pension
+<strong id="sumPension">0</strong>
+</div>
+
+</div>
+
+<div class="tableWrap">
+
+<table>
+
+<thead>
+<tr>
+<th>#</th>
+<th>Employé</th>
+<th>Distance</th>
+<th>Durée</th>
+<th>Prime</th>
+<th>Trajet</th>
+</tr>
+</thead>
+
+<tbody id="results">
+<tr>
+<td colspan="6">Aucun calcul effectué.</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+<p>
+<strong>Barème :</strong><br>
+Moins de 48 km : aucune prime<br>
+48 à moins de 72 km : TR1<br>
+72 à moins de 88 km : TR2<br>
+88 à moins de 120 km : TR3<br>
+120 km et plus : Pension
+</p>
+
+</div>
+
+<div class="card" id="mapCard">
+
+<h2>Trajet Google Maps</h2>
+
+<div class="routeInfo">
+
+<strong id="routeEmployee"></strong>
+
+<div class="routeDetails" id="routeDetails"></div>
+
+</div>
+
+<div id="map"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const STORAGE_KEY = "primeTransportGoogleEmployees";
+
+let lastResults = [];
+let currentSite = "";
+let map = null;
+let activeRoute = null;
+
+function loadEmployees(){
+  try{
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  }catch{
+    return [];
+  }
+}
+
+function saveEmployees(data){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function makeId(){
+  return Date.now().toString() + Math.random().toString(16);
+}
+
+function escapeHTML(text){
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function saveEmployee(){
+
+  const name = document.getElementById("name").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const editId = document.getElementById("editId").value;
+
+  if(!name || !address){
+    alert("Entre le nom et l'adresse de l'employé.");
+    return;
+  }
+
+  let employees = loadEmployees();
+
+  if(editId){
+
+    const index = employees.findIndex(e => e.id === editId);
+
+    if(index >= 0){
+      employees[index].name = name;
+      employees[index].address = address;
+    }
+
+  }else{
+
+    employees.push({
+      id: makeId(),
+      name: name,
+      address: address
+    });
+
+  }
+
+  saveEmployees(employees);
+  cancelEdit();
+  renderEmployees();
+}
+
+function renderEmployees(){
+
+  const query = document.getElementById("search").value.toLowerCase();
+
+  const employees = loadEmployees().filter(e =>
+    e.name.toLowerCase().includes(query) ||
+    e.address.toLowerCase().includes(query)
+  );
+
+  const container = document.getElementById("employeeList");
+
+  if(!employees.length){
+    container.innerHTML = "<p>Aucun employé.</p>";
+    return;
+  }
+
+  container.innerHTML = employees.map(e => `
+    <div class="employee">
+      <strong>${escapeHTML(e.name)}</strong>
+
+      <div class="employeeAddress">
+        ${escapeHTML(e.address)}
+      </div>
+
+      <button class="secondary" onclick="editEmployee('${e.id}')">
+        Modifier
+      </button>
+
+      <button class="danger" onclick="deleteEmployee('${e.id}')">
+        Supprimer
+      </button>
+    </div>
+  `).join("");
+}
+
+function editEmployee(id){
+
+  const employee = loadEmployees().find(e => e.id === id);
+
+  if(!employee) return;
+
+  document.getElementById("editId").value = employee.id;
+  document.getElementById("name").value = employee.name;
+  document.getElementById("address").value = employee.address;
+}
+
+function cancelEdit(){
+
+  document.getElementById("editId").value = "";
+  document.getElementById("name").value = "";
+  document.getElementById("address").value = "";
+}
+
+function deleteEmployee(id){
+
+  const employees = loadEmployees().filter(e => e.id !== id);
+
+  saveEmployees(employees);
+  renderEmployees();
+}
+
+function getPremium(km){
+
+  if(km < 48){
+    return {name:"Aucune prime", css:"none"};
+  }
+
+  if(km < 72){
+    return {name:"TR1", css:"tr1"};
+  }
+
+  if(km < 88){
+    return {name:"TR2", css:"tr2"};
+  }
+
+  if(km < 120){
+    return {name:"TR3", css:"tr3"};
+  }
+
+  return {name:"Pension", css:"pension"};
+}
+
+function formatDuration(seconds){
+
+  if(seconds === undefined || seconds === null){
+    return "—";
+  }
+
+  const totalMinutes = Math.round(seconds / 60);
+
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if(hours === 0){
+    return minutes + " min";
+  }
+
+  return hours + " h " + minutes + " min";
+}
+
+async function calculateTeam(){
+
+  const employees = loadEmployees();
+  const site = document.getElementById("site").value.trim();
+  const error = document.getElementById("error");
+
+  error.innerHTML = "";
+
+  if(!employees.length){
+    alert("Ajoute au moins un employé.");
+    return;
+  }
+
+  if(!site){
+    alert("Entre l'adresse du chantier.");
+    return;
+  }
+
+  document.getElementById("loading").style.display = "block";
+
+  try{
+
+    const {RouteMatrix} = await google.maps.importLibrary("routes");
+
+    const request = {
+      origins: employees.map(e => e.address),
+      destinations: [site],
+      travelMode: "DRIVING",
+      routingPreference: "TRAFFIC_UNAWARE",
+      fields: [
+        "originIndex",
+        "destinationIndex",
+        "distanceMeters",
+        "durationMillis"
+      ]
+    };
+
+    const response = await RouteMatrix.computeRouteMatrix(request);
+
+    const matrix = response.matrix || response;
+
+    const output = [];
+
+    employees.forEach((employee,index) => {
+
+      const item = Array.from(matrix).find(
+        x => x.originIndex === index
+      );
+
+      if(item && typeof item.distanceMeters === "number"){
+
+        const km = item.distanceMeters / 1000;
+        const premium = getPremium(km);
+
+        output.push({
+          ...employee,
+          km: km,
+          duration: item.durationMillis ? item.durationMillis / 1000 : null,
+          premium: premium.name,
+          premiumClass: premium.css
+        });
+
+      }else{
+
+        output.push({
+          ...employee,
+          km: null,
+          duration: null,
+          premium: "À vérifier",
+          premiumClass: "none"
+        });
+
+      }
+
+    });
+
+    output.sort((a,b) => {
+
+      if(a.km === null) return 1;
+      if(b.km === null) return -1;
+
+      return a.km - b.km;
+
+    });
+
+    lastResults = output;
+    currentSite = site;
+
+    renderResults(output);
+
+  }catch(err){
+
+    console.error(err);
+
+    error.innerHTML =
+      "Erreur Google Maps : " +
+      escapeHTML(err.message || "Impossible de calculer.");
+
+  }
+
+  document.getElementById("loading").style.display = "none";
+}
+
+function renderResults(data){
+
+  const tbody = document.getElementById("results");
+
+  tbody.innerHTML = data.map((r,index) => `
+    <tr>
+
+      <td>${index + 1}</td>
+
+      <td>
+        <strong>${escapeHTML(r.name)}</strong>
+      </td>
+
+      <td>
+        ${r.km === null ? "—" : r.km.toFixed(1) + " km"}
+      </td>
+
+      <td>
+        ${formatDuration(r.duration)}
+      </td>
+
+      <td>
+        <span class="badge ${r.premiumClass}">
+          ${escapeHTML(r.premium)}
+        </span>
+      </td>
+
+      <td>
+        ${
+          r.km === null
+          ? "—"
+          : `
+          <button class="primary" onclick="showRoute('${r.id}')">
+            Voir trajet
+          </button>
+          `
+        }
+      </td>
+
+    </tr>
+  `).join("");
+
+  document.getElementById("summary").style.display = "grid";
+
+  document.getElementById("total").innerText = data.length;
+
+  document.getElementById("sumTr1").innerText =
+    data.filter(r => r.premium === "TR1").length;
+
+  document.getElementById("sumTr2").innerText =
+    data.filter(r => r.premium === "TR2").length;
+
+  document.getElementById("sumTr3").innerText =
+    data.filter(r => r.premium === "TR3").length;
+
+  document.getElementById("sumPension").innerText =
+    data.filter(r => r.premium === "Pension").length;
+}
+
+async function showRoute(employeeId){
+
+  const employee = lastResults.find(e => e.id === employeeId);
+
+  if(!employee) return;
+
+  try{
+
+    document.getElementById("mapCard").style.display = "block";
+
+    document.getElementById("routeEmployee").innerText =
+      employee.name;
+
+    document.getElementById("routeDetails").innerText =
+      employee.km.toFixed(1) +
+      " km • " +
+      formatDuration(employee.duration) +
+      " • " +
+      employee.premium;
+
+    const {Map} = await google.maps.importLibrary("maps");
+    const {Route} = await google.maps.importLibrary("routes");
+
+    if(!map){
+
+      map = new Map(
+        document.getElementById("map"),
+        {
+          center:{lat:45.5,lng:-73.6},
+          zoom:9,
+          mapId:"DEMO_MAP_ID"
+        }
+      );
+
+    }
+
+    if(activeRoute){
+      try{
+        activeRoute.removeFromMap();
+      }catch{}
+    }
+
+    const request = {
+      origin: employee.address,
+      destination: currentSite,
+      travelMode: "DRIVING",
+      routingPreference: "TRAFFIC_UNAWARE",
+      fields: [
+        "distanceMeters",
+        "durationMillis",
+        "path"
+      ]
+    };
+
+    const response = await Route.computeRoutes(request);
+
+    const routes = response.routes;
+
+    if(!routes || !routes.length){
+      throw new Error("Aucun trajet trouvé.");
+    }
+
+    const route = routes[0];
+
+    activeRoute = route;
+
+    const polylines = route.createPolylines();
+
+    polylines.forEach(polyline => {
+      polyline.setMap(map);
+    });
+
+    const bounds = new google.maps.LatLngBounds();
+
+    route.path.forEach(point => {
+      bounds.extend(point);
+    });
+
+    map.fitBounds(bounds);
+
+    document.getElementById("mapCard").scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Impossible d'afficher le trajet : " +
+      (err.message || "Erreur Google Maps")
+    );
+
+  }
+}
+
+function clearResults(){
+
+  lastResults = [];
+  currentSite = "";
+
+  document.getElementById("results").innerHTML =
+    '<tr><td colspan="6">Aucun calcul effectué.</td></tr>';
+
+  document.getElementById("summary").style.display = "none";
+  document.getElementById("mapCard").style.display = "none";
+}
+
+function exportCSV(){
+
+  if(!lastResults.length){
+    alert("Fais un calcul avant.");
+    return;
+  }
+
+  let csv =
+    "Rang;Employé;Adresse;Distance km;Durée;Prime\n";
+
+  lastResults.forEach((r,index) => {
+
+    csv +=
+      (index + 1) + ";" +
+      r.name + ";" +
+      r.address + ";" +
+      (r.km === null ? "" : r.km.toFixed(1)) + ";" +
+      formatDuration(r.duration) + ";" +
+      r.premium + "\n";
+
+  });
+
+  const blob = new Blob(
+    ["\ufeff" + csv],
+    {type:"text/csv;charset=utf-8"}
+  );
+
+  const link = document.createElement("a");
+
+  link.href = URL.createObjectURL(blob);
+  link.download = "prime_transport.csv";
+
+  link.click();
+}
+
+renderEmployees();
+
+</script>
+
+<script>
+(g=>{
+var h,a,k,p="The Google Maps JavaScript API",
+c="google",
+l="importLibrary",
+q="__ib__",
+m=document,
+b=window;
+
+b=b[c]||(b[c]={});
+
+var d=b.maps||(b.maps={}),
+r=new Set,
+e=new URLSearchParams,
+u=()=>h||(h=new Promise(async(f,n)=>{
+
+await(a=m.createElement("script"));
+
+e.set("libraries",[...r]+"");
+
+for(k in g)
+e.set(
+k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),
+g[k]
+);
+
+e.set("callback",c+".maps."+q);
+
+a.src="https://maps."+c+"apis.com/maps/api/js?"+e;
+
+d[q]=f;
+
+a.onerror=()=>h=n(
+Error(p+" could not load.")
+);
+
+a.nonce=
+m.querySelector("script[nonce]")?.nonce||"";
+
+m.head.append(a);
+
+}));
+
+d[l]
+?
+console.warn(p+" only loads once. Ignoring:",g)
+:
+d[l]=(f,...n)=>
+r.add(f)&&u().then(()=>d[l](f,...n));
+
+})({
+key:"AIzaSyAgWsBOrnbLuCM0zKlKMoQc7pxdEQDFjPU",
+v:"weekly",
+language:"fr",
+region:"CA"
+});
+</script>
+
+</body>
+</html>
